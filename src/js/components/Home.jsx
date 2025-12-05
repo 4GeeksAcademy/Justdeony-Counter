@@ -10,19 +10,45 @@ import Card from "./Cards";
 
 const Home = () => {
   const [seconds, setSeconds] = useState(0);
+  const [isRunning, setIsRunning] = useState(true);
+
   useEffect(() => {
+    if (!isRunning) return;
     const intervalId = setInterval(() => {
       setSeconds((prev) => prev + 1);
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [isRunning]);
 
+  const secondString = seconds.toString().padStart(6, "0");
+
+  const handleStart = () => setIsRunning(true);
+  const handleStop = () => setIsRunning(false);
+  const handleReset = () => {
+    setSeconds(0);
+    setIsRunning(false);
+  };
+
+  const digits = secondString.split("");
   // JSX return
 
   return (
-    <div className="text-center">
-      <h2>{seconds}</h2>
+    <div className="d-flex justify-content-center gap-3 mt-5">
+      {digits.map((digit, index) => (
+        <Card key={index} number={digit} />
+      ))}
+      <div className="d-flex justify-content-center gap-3">
+        <button className="btn btn-success" onClick={handleStart}>
+          Start
+        </button>
+        <button className="btn btn-danger" onClick={handleStop}>
+          Stop
+        </button>
+        <button className="btn btn-warning" onClick={handleReset}>
+          Reset
+        </button>
+      </div>
     </div>
   );
 };

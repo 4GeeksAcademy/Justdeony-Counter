@@ -1,15 +1,14 @@
-function Card(props){
-    return (
-        <div className="card">
-            <img className="card-img-top" src={props.imageUrl} alt="Card image cap" />
-            <div className="card-body">
-                <Card imageUrl="http://via.placeholder.com/350x150" title="A nice image" />
-                <h5 className="card-title">{props.title}</h5>
-                <p className="card-text">Some quick example text to build on the card title and fill the card's content.</p>
-                <a href="#" className="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    );
-}
+import React from "react";
 
-export default Card
+const Card = ({ number }) => {
+  return (
+     <div className="card text-center" style={{ width: "6rem", height: "8rem", backgroundColor: "black", fontWeight: "bold", color: "yellow", boxShadow: "0 0 40px rgba(0, 0, 0, 1)" }}
+     >
+      <div className="card-body">
+        <h2 className="card-title">{number}</h2>
+      </div>
+    </div>
+  );
+};
+
+export default Card;
