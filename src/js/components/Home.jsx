@@ -23,6 +23,7 @@ const Home = () => {
 
   const secondString = seconds.toString().padStart(6, "0");
 
+  // Function for stop watch
   const handleStart = () => setIsRunning(true);
   const handleStop = () => setIsRunning(false);
   const handleReset = () => {
@@ -30,6 +31,7 @@ const Home = () => {
     setIsRunning(false);
   };
 
+  // Digits split into each card
   const digits = secondString.split("");
   // JSX return
 
